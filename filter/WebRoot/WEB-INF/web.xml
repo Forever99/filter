@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <servlet>
+    <servlet-name>Servlet1</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.servlet.Servlet1</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Servlet2</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.servlet.Servlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Servlet3</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.servlet.Servlet3</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.aotoLogin.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestServlet</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.requestFilter.RequestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestServlet2</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.requestFilter.RequestServlet2</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GzipServlet</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.gzipFilter.GzipServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.gzipFilter.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RequestServlet3</servlet-name>
+    <servlet-class>com.zhku.jsj144.zk.filter.requestFilter.RequestServlet3</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>Servlet1</servlet-name>
+    <url-pattern>/servlet1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Servlet2</servlet-name>
+    <url-pattern>/servlet2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Servlet3</servlet-name>
+    <url-pattern>/servlet3</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestServlet</servlet-name>
+    <url-pattern>/requestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestServlet2</servlet-name>
+    <url-pattern>/requestServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GzipServlet</servlet-name>
+    <url-pattern>/gzipServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/testServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RequestServlet3</servlet-name>
+    <url-pattern>/requestServlet3</url-pattern>
+  </servlet-mapping>
+  
+  
+<!--   设置全站统一响应编码【解决乱码问题】 -->
+
+  <filter>
+  <filter-name>ResponseEncodingFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.practice.ResponseEncodingFilter</filter-class>
+  <init-param>
+  <param-name>encoding</param-name>
+  <param-value>utf-8</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+  <filter-name>ResponseEncodingFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+  <!--   设置禁止浏览器缓存数据 【对于动态资源】-->
+ 
+   <filter>
+  <filter-name>NoCacheFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.practice.NoCacheFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>NoCacheFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+    <!--   设置控制浏览器缓存数据【对于静态资源】 -->
+    
+   <filter>
+  <filter-name>CacheFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.practice.CacheFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>CacheFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+    <!--  自动登录过滤器 -->
+  
+   <filter>
+  <filter-name>AutoLoginFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.aotoLogin.AutoLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>AutoLoginFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+   
+      <!--  解决全站的请求数据的乱码问题 -->
+  
+   <filter>
+  <filter-name>RequestFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.requestFilter.RequestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>RequestFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  
+  
+  <!--  解决全站的数据压缩 -->
+
+   <filter>
+  <filter-name>GzipFilter</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.gzipFilter.GzipFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>GzipFilter</filter-name>
+  <url-pattern>/testServlet</url-pattern>
+  </filter-mapping>
+
+   
+<!--   过滤器的demo1练习 -->
+<!-- 
+  <filter>
+  <filter-name>Filter1</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter1</filter-class>
+  </filter>
+  <filter>
+  <filter-name>Filter2</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter2</filter-class>
+  </filter>
+   
+
+  <filter-mapping>
+  <filter-name>Filter1</filter-name>
+  <url-pattern>/servlet1</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+  <filter-name>Filter2</filter-name>
+  <url-pattern>/servlet1</url-pattern>
+  </filter-mapping>
+  -->
+  
+<!--  用户可以设置多个dispatcher 子元素用来指定 Filter 对资源的多种调用方式进行拦截 -->
+
+<!--  Filter3 通过对资源：index.jsp使用forward调用形式的过滤 -->
+<!-- 在dispatcher.jsp页面种  forward   到  index.jsp 
+做法：<jsp:forward page="/index.jsp"></jsp:forward> 
+   -->
+   <filter>
+   <filter-name>Filter3</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter3</filter-class>
+  <init-param>
+  <param-name>encoding</param-name>
+  <param-value>utf-8</param-value>
+  </init-param>
+  <init-param>
+  <param-name>name</param-name>
+  <param-value>世间</param-value>
+  </init-param>
+  </filter>
+  <filter-mapping>
+  <filter-name>Filter3</filter-name>
+  <url-pattern>/index.jsp</url-pattern>
+  <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
+<!--  Filter4 通过对资源：servlet2 （request请求参数）使用request调用形式的过滤 -->
+ 
+   <filter>
+  <filter-name>Filter4</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter4</filter-class>
+  </filter>
+  <filter-mapping>
+  <filter-name>Filter4</filter-name>
+  <url-pattern>/servlet2</url-pattern>
+  <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  
+<!--  Filter5 通过对资源：servlet2中   ，做法：include进来dispatcher.jsp 
+即：	request.getRequestDispatcher("/index.jsp").include(request, response);
+	request.getRequestDispatcher("/dispatcher.jsp").include(request, response);
+ 使用include调用形式的过滤
+  -->
+   <filter>
+  <filter-name>Filter5</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter5</filter-class>
+  </filter>
+    <filter-mapping>
+  <filter-name>Filter5</filter-name>
+  <url-pattern>/dispatcher.jsp</url-pattern>
+  <dispatcher>INCLUDE</dispatcher>  
+  </filter-mapping>
+ 
+  <!--  Filter6 通过对资源：使用error调用形式的过滤 -->
+   <filter>
+  <filter-name>Filter6</filter-name>
+  <filter-class>com.zhku.jsj144.zk.filter.demo1.Filter6</filter-class>
+  </filter>
+    <filter-mapping>
+  <filter-name>Filter6</filter-name>
+  <url-pattern>/servlet3</url-pattern>
+  <dispatcher>ERROR</dispatcher> 
+  </filter-mapping>
+<!--   配置error信息页面 -->
+
+   <error-page>
+  <error-code>404</error-code>
+  <location>/index.jsp</location>
+  </error-page>
+  
+  <error-page>
+  <error-code>500</error-code>
+  <location>/index.jsp</location>
+  </error-page>
+
+</web-app>
