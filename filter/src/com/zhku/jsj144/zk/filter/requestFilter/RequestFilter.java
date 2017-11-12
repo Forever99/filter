@@ -33,14 +33,6 @@ public class RequestFilter implements Filter {
 		
 		System.out.println("开始工作。。。。。。。。。。。。。。。。");
 		
-		///解决post中文乱码问题  
-	    req.setCharacterEncoding("UTF-8");  
-        resp.setCharacterEncoding("UTF-8");  
-        resp.setContentType("text/html;charset=UTF-8"); 
-        
-        
-        //解决get中文乱码问题  
-		
 		//思路：获取参数有三种方式，我们的目的：就是对这三种方式进行改写：即增强它们的功能
 		//装饰者模式，我们的思路时加强request,然后把加强后的request传递下去，这样，
 		//在使用加强后的request的获得参数的三种方法，就可以获得设置编码后的，正确的中文参数了。
